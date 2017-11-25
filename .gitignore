@@ -1,2 +1,5 @@
 __pycache__
 .idea/workspace.xml
+login/admin.pyc
+login/migrations/__init__.pyc
+login/models.pyc
