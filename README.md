@@ -1,4 +1,4 @@
-# hci_webapp
+# HCI Speechify project: web application
 
 ### If changes are being made in any models.py file, run:
 * python manage.py makemigrations [app]
