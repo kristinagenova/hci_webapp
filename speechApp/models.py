@@ -10,6 +10,7 @@ class Patient(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     age = models.PositiveIntegerField()
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
 
 class Appointment(models.Model):
     date = models.DateField()
