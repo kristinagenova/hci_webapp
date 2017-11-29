@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block styles %}
+
+.timeline {
+  list-style: none;
+}
+.timeline:before {
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  width: 3px;
+  background-color: #eeeeee;
+  left: 50%;
+  margin-left: -1.5px;
+}
+.timeline:after {
+  clear: both;
+}
+.timeline > li {
+  margin-bottom: 20px;
+  position: relative;
+  width: 50%;
+  float: left;
+  clear: left;
+}
+.timeline > li:nth-child(2) {
+  margin-top: 60px;
+}
+.timeline > li:nth-child(odd) {
+  float: right;
+  clear: right;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.timeline > li:before, .timeline > li:after {
+  content: " ";
+  display: table;
+}
+.timeline > li > .timeline-badge {
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  line-height: 50px;
+  font-size: 1.4em;
+  text-align: center;
+  position: absolute;
+  top: 16px;
+  right: -12px;
+  z-index: 100;
+}
+.timeline > li > .card {
+  position: relative;
+  width: 95%;
+}
+.timeline > li:nth-child(even) > .card {
+  float: left;
+}
+.timeline > li:nth-child(odd) > .card {
+  float: right;
+}
+.timeline > li > .card:before {
+  position: absolute;
+  top: 26px;
+  display: inline-block;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  content: " ";
+}
+.timeline > li:nth-child(even) > .card:before {
+  right: -15px;
+  border-left: 15px solid #ccc;
+  border-right: 0 solid #ccc;
+}
+.timeline > li:nth-child(odd) > .card:before {
+  left: -15px;
+  border-right: 15px solid #ccc;
+  border-left: 0 solid #ccc;
+}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="card">
+        <img class="card-img-top" align="left" height="150px" src="{% static "girl.svg" %}" alt="Girl"/>
+        <div class="card-body">
+          <h4 class="card-title">{{ patient.first_name }} {{ patient.last_name }}</h4>
+          <p>Age: {{ patient.age }}</p>
+          <p>Guarded by: {{ patient.guardian }}</p>
+          <p>E-mail: {{ patient.email }}</p>
+          <p>Mobile: {{ patient.mobile }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7" style="height: 100vh; overflow: scroll">
+      <ul class="timeline">
+        {% for timeline_entry in timeline %}
+          <li>
+            <div class="timeline-badge"><i class="glyphicon glyphicon-record"></i></div>
+            <div class="card">
+              <div class="card-body">
+                <p class="card-text">Test</p>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
