@@ -10,7 +10,7 @@
     <span class="navbar-text">
       {% if user.is_authenticated %}
         <div class="form-inline">
-          <span class="navbar-text">Hello, Dr. {{ user.doctor.last_name }}!</span>
+          <span class="navbar-text" style="margin-right:10px">Hello, Dr. {{ user.doctor.last_name }}!</span>
           <a class="btn btn-sm align-middle btn-outline-secondary" href="/login/logout">Sign out</a>
         </div>
       {% endif %}
