@@ -1,33 +1,42 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
+
 {% block content %}
 
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm">
-      <h1>My patients</h1>
-
+      <h1 style="margin-bottom: 40px">My patients:</h1>
       <div class="row">
         {% for patient in patients %}
           <div class="col-sm-4">
-            <div class="card">
+            <div class="card form-group">
               <div class="card-body">
-                <h4 class="card-title">{{ patient.first_name }} {{ patient.last_name }}</h4>
-                <h6 class="card-subtitle mb-2 text-muted">Age {{ patient.age }}</h6>
-                <a href="/patient/{{ patient.id }}" class="btn btn-primary btn-lg">View</a>
+                <div class="media">
+                  {% if patient.gender == "Male" %}
+                  <img class="d-flex mr-3" align="left" style="height: 100px" src="{% static "boy.jpg" %}" alt="Boy"/>
+                  {% elif patient.gender == "Female" %}
+                  <img class="d-flex mr-3" align="left" style="height: 100px" src="{% static "girl.png" %}" alt="Girl"/>
+                  {% endif %}
+                  <div class="media-body">
+                    <h4 "mt-0">{{ patient.first_name }} {{ patient.last_name }}</h4>
+                    <h6 "mt-0">Age: {{ patient.age }}</h6>
+                    <a href="/patient/{{ patient.id }}">View</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         {% endfor %}
 
         <div class="col-sm-4">
-          <div class="card">
+          <div class="card form-group text-center" style="height: 100px">
             <div class="card-body">
               <a href="/patient/add" class="btn btn-primary btn-lg">Add new patient</a>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
